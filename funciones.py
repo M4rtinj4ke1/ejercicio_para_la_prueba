@@ -22,10 +22,14 @@ def opcion_3():
         print('No exiten contactos, vuelva a la opcion 1')
     else:
         nombre_archivo = input('Ingrese nombre del archivo: ')+".csv"
-        import csv
-        with open (nombre_archivo,'w',newline='') as archivo:
-            escritor = csv.DictWriter(archivo, contactos[0].keys())
-            escritor.writerows(contactos)
+        try:
+            import csv
+            with open (nombre_archivo,'x',newline='') as archivo:
+                escritor = csv.DictWriter(archivo, contactos[0].keys())
+                escritor.writerows(contactos)
+            print('ARCHIVO CREADO CON EXITO')
+        except:
+            print('ERROR! el nombre del archivo ya existe!')
 
 def opcion_4():
     print("GRACIA, ADIOS")
